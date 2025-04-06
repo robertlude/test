@@ -35,7 +35,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build
-        run: npm run build
+        run: |
+          npm run build
+          sed -i 's|href="/|href="/test/|g; s|src="/|src="/test/|g' ./build/index.html
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
