@@ -6,6 +6,9 @@ function App() {
   useEffect(() => {
     fetch('https://github.com/login/device/code', {
       method: 'POST',
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      },
       body: JSON.stringify({
         client_id: 'Ov23liuBOJUWyhNPf1rb',
         scope: 'user:email'
