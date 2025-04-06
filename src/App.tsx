@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  useEffect(() => {
+    fetch('https://github.com/login/device/code', {
+      method: 'POST',
+      body: JSON.stringify({
+        client_id: 'Ov23liuBOJUWyhNPf1rb',
+        scope: 'user:email'
+      })
+    })
+    .then(response => response.json())
+    .then(data => console.log({data}))
+  }, [])
+  
   return (
     <div className="App">
       <header className="App-header">
