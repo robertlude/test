@@ -7,7 +7,7 @@ function App() {
     fetch('https://github.com/login/device/code', {
       method: 'POST',
       headers: {
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': 'https://robertlude.github.io'
       },
       body: JSON.stringify({
         client_id: 'Ov23liuBOJUWyhNPf1rb',
