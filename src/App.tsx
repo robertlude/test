@@ -8,7 +8,7 @@ function App() {
   useEffect(() => {
     if (!code) return
 
-    fetch('/repos/robertlude/test/contents/package.json', {
+    fetch('https://api.github.com/repos/robertlude/test/contents/package.json', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${code}`,
