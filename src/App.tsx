@@ -1,21 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useEffect /*, useState */ } from 'react';
 import './App.css';
 
 function App() {
+  const code = new URLSearchParams(window.location.search).get('code')
+  //const [contents, setContents] = useState<string>(null)
+
   useEffect(() => {
-    fetch('https://github.com/login/device/code', {
-      method: 'POST',
+    if (!code) return
+
+    fetch('/repos/robertlude/test/contents/package.json', {
+      method: 'GET',
       headers: {
-        'Access-Control-Allow-Origin': 'https://robertlude.github.io/test'
+        'Authorization': `Bearer ${code}`,
       },
-      body: JSON.stringify({
-        client_id: 'Ov23liuBOJUWyhNPf1rb',
-        scope: 'user:email'
-      })
     })
     .then(response => response.json())
-    .then(data => console.log({data}))
-  }, [])
+    .then(data => console.log(data))
+  }, [code])
   
   return (
     <div className="App">
